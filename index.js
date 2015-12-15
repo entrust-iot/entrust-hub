@@ -23,7 +23,7 @@ app.get("/", function (req, res) {
 app.post("/:sensor/:value", function(req, res) {
     var body = req.body;
     if (!db[req.params.sensor]) {
-        db[req.params.sensor] = {};
+        db[req.params.sensor] = [];
     }
 
     db[req.params.sensor].push({
