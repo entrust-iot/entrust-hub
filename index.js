@@ -4,13 +4,14 @@ var bodyParser = require("body-parser");
 var app = express();
 
 var ids = [];
+var upAt = (new Date()).getTime();
 
 var db = {};
 
 app.use(bodyParser.json());
 
 //GET on / will return server status
-app.get("/", function (req, res) {
+app.get("/status", function (req, res) {
   var genericResp = "Server status: running<br>";
   genericResp += "Current date/time: " + (new Date()).toString() + "<br>";
   genericResp += "Hello world";
@@ -33,6 +34,23 @@ app.post("/:sensor/:value", function(req, res) {
 
     res.json({"success": "1"});
 });
+
+app.get("/upsince", function(req, res) {
+    var uptime = (new Date()).getTime() - upAt;
+    res.json({bootTime: upAt, upTime: uptime});
+});
+
+//GET for all the data about a specific sensor
+app.get("/:sensor", function(req, res, next) {
+    if (!db[req.params.sensor]) {
+        return next();
+    }
+
+    res.json(db[req.params.sensor]);
+});
+
+//Add a static server for files under the public_html folder
+app.use(express.static(__dirname + "/public_html"));
 
 var appPort = process.env.PORT || 5000;
 
