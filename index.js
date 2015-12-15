@@ -31,7 +31,7 @@ app.post("/:sensor/:value", function(req, res) {
         'value': req.params.value
     });
 
-    res.send(JSON.stringify({"success": "1"}));
+    res.json({"success": "1"});
 });
 
 var appPort = process.env.PORT || 5000;
