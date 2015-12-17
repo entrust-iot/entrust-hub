@@ -56,6 +56,8 @@ var Device = function(id) {
 
     this.getSensorData = function(sensorId) {
         console.log("Getting sensor data for " + self.id + ", sensor: " + sensorId);
+        console.log(self.sensors);
+        console.log(self.sensors[0]._data);
         var sensorData = [];
         for (var i = 0; i < self.sensors.length; i++) {
             if (self.sensors[i].id === sensorId) {
