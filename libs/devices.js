@@ -21,7 +21,9 @@ var devicesCollection = function() {
 
     this.getAllSensorData = function(sensorId) {
         var sensorData = [];
+        console.log("Fetching all sensors data");
         for (var i = 0; i < data.length; i++) {
+            console.log("Looking up " + data[i].id);
             sensorData.concat(data[i].getSensorData(sensorId));
         }
 
@@ -51,6 +53,7 @@ var Device = function(id) {
     };
 
     this.getSensorData = function(sensorId) {
+        console.log("Getting sensor data for " + self.id + ", sensor: " + sensorId);
         var sensorData = [];
         for (var i = 0; i < self.sensors.length; i++) {
             if (self.sensors[i].id === sensorId) {
