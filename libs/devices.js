@@ -16,6 +16,8 @@ var devicesCollection = function() {
     this.createDevice = function(id) {
         var device = new Device(id);
         data.push(device);
+        console.log("Added device, new data array is ");
+        console.log(data);
         return device;
     };
 
