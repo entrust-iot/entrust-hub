@@ -16,6 +16,7 @@ var devicesCollection = function() {
     this.createDevice = function(id) {
         var device = new Device(id);
         data.push(device);
+        return device;
     };
 
     this.getAllSensorData = function(sensorId) {
