@@ -77,4 +77,4 @@ var Sensor = function(id) {
     }
 };
 
-module.exports = devicesCollection();
+module.exports = new devicesCollection();
