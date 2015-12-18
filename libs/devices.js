@@ -73,6 +73,7 @@ var Device = function(id) {
                 sensorData.push(sensor._data[i].value);
             }
         }
+        console.log("Sensor data for " + sensorId);
         console.log(sensorData);
         return sensorData;
     }
