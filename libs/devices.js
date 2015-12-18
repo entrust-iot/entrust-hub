@@ -67,7 +67,7 @@ var Device = function(id) {
                 break;
             }
         }
-
+        console.log(sensorData);
         return sensorData;
     }
 };
