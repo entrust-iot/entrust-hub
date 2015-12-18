@@ -54,17 +54,23 @@ var Device = function(id) {
         sensor.addData(value);
     };
 
-    this.getSensorData = function(sensorId) {
-        console.log("Getting sensor data for " + self.id + ", sensor: " + sensorId);
-        console.log(self.sensors);
-        console.log(self.sensors[0]._data);
-        var sensorData = [];
-        for (var i = 0; i < self.sensors.length; i++) {
-            if (self.sensors[i].id === sensorId) {
-                for (var j = 0; j < self.sensors[i]._data.length; j++) {
-                    sensorData.push(self.sensors[i]._data[j].value);
-                }
+    this.getSensorById = function(sensorId) {
+        var sensor = null;
+        for (var i = 0; i < this.sensors.length; i ++) {
+            if (this.sensors[i].id === sensorId) {
+                sensor = this.sensors[i];
                 break;
+            }
+        }
+        return sensor;
+    };
+
+    this.getSensorData = function(sensorId) {
+        var sensorData = [];
+        var sensor = this.getSensorById(sensorId);
+        if (sensor !== null) {
+            for (var i = 0; i < sensor._data.length; i++) {
+                sensorData.push(sensor._data[i].value);
             }
         }
         console.log(sensorData);
