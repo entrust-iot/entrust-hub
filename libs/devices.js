@@ -26,9 +26,7 @@ var devicesCollection = function() {
         console.log("Fetching all sensors data");
         for (var i = 0; i < data.length; i++) {
             console.log("Looking up " + data[i].id);
-            var dataForDevice = data[i].getSensorData(sensorId);
-            console.log(dataForDevice);
-            sensorData.concat(dataForDevice);
+            sensorData = sensorData.concat(data[i].getSensorData(sensorId));
         }
         console.log("All sensors");
         console.log(sensorData);
