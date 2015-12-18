@@ -72,7 +72,7 @@ var Device = function(id) {
         var sensor = this.getSensorById(sensorId);
         if (sensor !== null) {
             for (var i = 0; i < sensor._data.length; i++) {
-                sensorData.push(sensor._data[i].value);
+                sensorData.push(parseInt(sensor._data[i].value));
             }
         }
         console.log("Sensor data for " + sensorId);
