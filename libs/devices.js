@@ -28,6 +28,8 @@ var devicesCollection = function() {
             console.log("Looking up " + data[i].id);
             sensorData.concat(data[i].getSensorData(sensorId));
         }
+        console.log("All sensors");
+        console.log(sensorData);
 
         return sensorData;
     }
