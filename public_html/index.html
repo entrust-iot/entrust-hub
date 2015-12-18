@@ -135,7 +135,7 @@
         $.get("/sensor1").done(function (resp) {
             var data = ["sensor data"];
             for (var i = 0; i < resp.length; i++) {
-                data.push(resp[i].value);
+                data.push(resp[i]);
             }
             chart1.load({
                 columns: [
@@ -147,7 +147,7 @@
         $.get("/sensor2").done(function (resp) {
             var data = ["sensor data"];
             for (var i = 0; i < resp.length; i++) {
-                data.push(resp[i].value);
+                data.push(resp[i]);
             }
             chart2.load({
                 columns: [

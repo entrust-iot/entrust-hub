@@ -16,8 +16,6 @@ var devicesCollection = function() {
     this.createDevice = function(id) {
         var device = new Device(id);
         data.push(device);
-        console.log("Added device, new data array is ");
-        console.log(data);
         return device;
     };
 
@@ -25,11 +23,8 @@ var devicesCollection = function() {
         var sensorData = [];
         console.log("Fetching all sensors data");
         for (var i = 0; i < data.length; i++) {
-            console.log("Looking up " + data[i].id);
             sensorData = sensorData.concat(data[i].getSensorData(sensorId));
         }
-        console.log("All sensors");
-        console.log(sensorData);
 
         return sensorData;
     }
@@ -75,8 +70,6 @@ var Device = function(id) {
                 sensorData.push(parseInt(sensor._data[i].value));
             }
         }
-        console.log("Sensor data for " + sensorId);
-        console.log(sensorData);
         return sensorData;
     }
 };
