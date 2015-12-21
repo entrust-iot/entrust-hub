@@ -83,6 +83,9 @@ var Sensor = function(id) {
             value: data,
             timestamp: (new Date()).getTime()
         };
+        if (self._data.length >= 100) {
+            self._data.shift();
+        }
         self._data.push(sensorData);
     }
 };
