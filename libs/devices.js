@@ -23,7 +23,7 @@ var devicesCollection = function() {
         var sensorData = [];
         console.log("Fetching all sensors data");
         for (var i = 0; i < data.length; i++) {
-            sensorData = sensorData.concat(data[i].getSensorData(sensorId));
+            sensorData.push([data[i].id.substr(0,8)].concat(data[i].getSensorData(sensorId)));
         }
 
         return sensorData;

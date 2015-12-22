@@ -133,26 +133,15 @@
 
     function updateSensorData() {
         $.get("/sensor1").done(function (resp) {
-            var data = ["sensor data"];
-            for (var i = 0; i < resp.length; i++) {
-                data.push(resp[i]);
-            }
+
             chart1.load({
-                columns: [
-                    data
-                ]
+                columns: resp
             });
         });
 
         $.get("/sensor2").done(function (resp) {
-            var data = ["sensor data"];
-            for (var i = 0; i < resp.length; i++) {
-                data.push(resp[i]);
-            }
             chart2.load({
-                columns: [
-                    data
-                ]
+                columns: resp
             });
         });
     }
