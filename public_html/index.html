@@ -43,21 +43,29 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <!-- Example row of columns -->
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <h2>Range</h2>
+            <p id="sensor1"><div id="chart1"></div></p>
+        </div>
+        <div class="col-md-6">
+            <h2>Darkness</h2>
+            <p id="sensor2"><div id="chart2"></div></p>
+        </div>
+        <div class="col-md-6">
+            <h2>Temperature</h2>
+            <p id="sensor3"><div id="chart3"></div></p>
+        </div>
+        <div class="col-md-6">
+            <h2>Humidity</h2>
+            <p id="sensor4"><div id="chart4"></div></p>
+        </div>
+        <div class="col-md-6">
             <h2>Uptime</h2>
             <p>Server has been up since <span id="upsince"></span></p>
             <p>Total up time is <span id="uptime"></span></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Sensor1</h2>
-            <p id="sensor1"><div id="chart1"></div></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Sensor2</h2>
-            <p id="sensor2"><div id="chart2"></div></p>
         </div>
     </div>
 
@@ -117,39 +125,120 @@
     var chart1 = c3.generate({
         bindto: '#chart1',
         data: {
-            columns: [
-
-            ]
-        },
+		    x: 'x',
+			columns: [
+			    ['x'],
+				[] 
+			]
+			},
         transition: {
           duration: 0
-        }
+        },
+		axis: {
+		    x: {
+			    type: 'timeseries',
+				tick: {
+                    format: '%H:%M:%S',
+					count: 10
+                }
+
+			}
+		}
     });
     var chart2 = c3.generate({
         bindto: '#chart2',
         data: {
-            columns: [
-
-            ]
-        },
+		    x: 'x',
+			columns: [
+			    ['x'],
+				[] 
+			]
+			},
         transition: {
           duration: 0
-        }
+        },
+		axis: {
+		    x: {
+			    type: 'timeseries',
+				tick: {
+                    format: '%H:%M:%S',
+					count: 10
+                }
+
+			}
+		}
     });
+    var chart3 = c3.generate({
+        bindto: '#chart3',
+        data: {
+		    x: 'x',
+			columns: [
+			    ['x'],
+				[] 
+			]
+			},
+        transition: {
+          duration: 0
+        },
+		axis: {
+		    x: {
+			    type: 'timeseries',
+				tick: {
+                    format: '%H:%M:%S',
+					count: 10
+                }
+
+			}
+		}
+	})
+    var chart4 = c3.generate({
+        bindto: '#chart4',
+        data: {
+		    x: 'x',
+			columns: [
+			    ['x'],
+				[] 
+			]
+			},
+        transition: {
+          duration: 0
+        },
+		axis: {
+		    x: {
+			    type: 'timeseries',
+				tick: {
+                    format: '%H:%M:%S',
+					count: 10
+                }
+
+			}
+		}
+	})
 
     function updateSensorData() {
-        $.get("/sensor1").done(function (resp) {
+        $.get("/timeseries/sensor1").done(function (resp) {
 
             chart1.load({
                 columns: resp
             });
         });
 
-        $.get("/sensor2").done(function (resp) {
+        $.get("/timeseries/sensor2").done(function (resp) {
             chart2.load({
                 columns: resp
             });
         });
+        $.get("/timeseries/sensor3").done(function (resp) {
+            chart3.load({
+                columns: resp
+            });
+        });
+        $.get("/timeseries/sensor4").done(function (resp) {
+            chart4.load({
+                columns: resp
+            });
+        });
+
     }
 
 
