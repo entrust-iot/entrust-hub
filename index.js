@@ -40,9 +40,14 @@ app.get("/upsince", function(req, res) {
 });
 
 //GET for all the data about a specific sensor
+app.get("/timeseries/:sensor", function(req, res, next) {
+    var data = devices.getAllSensorTimeData(req.params.sensor);
+    res.json(data);
+});
+
+//GET for all the data about a specific sensor
 app.get("/:sensor", function(req, res, next) {
     var data = devices.getAllSensorData(req.params.sensor);
-
     res.json(data);
 });
 
