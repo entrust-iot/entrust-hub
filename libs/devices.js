@@ -28,6 +28,18 @@ var devicesCollection = function() {
 
         return sensorData;
     }
+
+    this.getAllSensorTimeData = function(sensorId) {
+        var sensorData = [];
+        console.log("Fetching all sensors data");
+        for (var i = 0; i < data.length; i++) {
+			sensorData.push(["x"].concat(data[i].getTimeData(sensorId)));
+            sensorData.push([data[i].id.substr(0,8)].concat(data[i].getSensorData(sensorId)));
+        }
+
+        return sensorData;
+    }
+
 };
 
 var Device = function(id) {
@@ -72,6 +84,18 @@ var Device = function(id) {
         }
         return sensorData;
     }
+
+    this.getTimeData = function(sensorId) {
+        var timeData = [];
+        var sensor = this.getSensorById(sensorId);
+        if (sensor !== null) {
+            for (var i = 0; i < sensor._data.length; i++) {
+                timeData.push(sensor._data[i].timestamp);
+            }
+        }
+        return timeData;
+    }
+
 };
 
 var Sensor = function(id) {
@@ -81,7 +105,7 @@ var Sensor = function(id) {
     this.addData = function(data) {
         var sensorData = {
             value: data,
-            timestamp: (new Date()).getTime()
+            timestamp: Date.now()
         };
         if (self._data.length >= 361) {
             self._data.shift();
