@@ -13,6 +13,10 @@ var devicesCollection = function() {
         return device;
     };
 
+	this.reset = function() {
+		data = [];
+	}
+
     this.createDevice = function(id) {
         var device = new Device(id);
         data.push(device);
@@ -46,7 +50,7 @@ var Device = function(id) {
     this.id = id;
     var self = this;
     this.sensors = [];
-
+	
     this.addSensorData = function(sensorId, value) {
         var sensor = null;
         for (var i = 0; i < self.sensors.length; i++) {
