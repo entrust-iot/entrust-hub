@@ -39,6 +39,11 @@ app.get("/upsince", function(req, res) {
     res.json({bootTime: upAt, upTime: uptime});
 });
 
+app.get("/resetalldata", function(req, res) {
+	devices.reset();
+	res.json({"success": "1"});
+});
+
 //GET for all the data about a specific sensor
 app.get("/timeseries/:sensor", function(req, res, next) {
     var data = devices.getAllSensorTimeData(req.params.sensor);
