@@ -35,9 +35,9 @@ var devicesCollection = function() {
 
     this.getAllSensorTimeData = function(sensorId) {
         var sensorData = [];
-        console.log("Fetching all sensors data");
+        console.log("Fetching all sensors time data");
         for (var i = 0; i < data.length; i++) {
-			sensorData.push(["x"].concat(data[i].getTimeData(sensorId)));
+            sensorData.push(["x"].concat(data[i].getTimeData(sensorId)));
             sensorData.push([data[i].id.substr(0,8)].concat(data[i].getSensorData(sensorId)));
         }
 
