@@ -125,99 +125,98 @@
     var chart1 = c3.generate({
         bindto: '#chart1',
         data: {
-		    x: 'x',
-			columns: [
-			    ['x'],
-				[] 
-			]
-			},
+            x: 'x',
+            columns: [
+                ['x'],
+                []
+            ]
+            },
         transition: {
           duration: 0
         },
-		axis: {
-		    x: {
-			    type: 'timeseries',
-				tick: {
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
                     format: '%H:%M:%S',
-					count: 9
+                    count: 9
                 }
 
-			}
-		}
+            }
+        }
     });
     var chart2 = c3.generate({
         bindto: '#chart2',
         data: {
-		    x: 'x',
-			columns: [
-			    ['x'],
-				[] 
-			]
-			},
+            x: 'x',
+            columns: [
+                ['x'],
+                []
+            ]
+            },
         transition: {
           duration: 0
         },
-		axis: {
-		    x: {
-			    type: 'timeseries',
-				tick: {
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
                     format: '%H:%M:%S',
-					count: 9
+                    count: 9
                 }
 
-			}
-		}
+            }
+        }
     });
     var chart3 = c3.generate({
         bindto: '#chart3',
         data: {
-		    x: 'x',
-			columns: [
-			    ['x'],
-				[] 
-			]
-			},
+            x: 'x',
+            columns: [
+                ['x'],
+                []
+            ]
+            },
         transition: {
           duration: 0
         },
-		axis: {
-		    x: {
-			    type: 'timeseries',
-				tick: {
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
                     format: '%H:%M:%S',
-					count: 9
+                    count: 9
                 }
 
-			}
-		}
-	})
+            }
+        }
+    })
     var chart4 = c3.generate({
         bindto: '#chart4',
         data: {
-		    x: 'x',
-			columns: [
-			    ['x'],
-				[] 
-			]
-			},
+            x: 'x',
+            columns: [
+                ['x'],
+                []
+            ]
+            },
         transition: {
           duration: 0
         },
-		axis: {
-		    x: {
-			    type: 'timeseries',
-				tick: {
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
                     format: '%H:%M:%S',
-					count: 9
+                    count: 9
                 }
 
-			}
-		}
-	})
+            }
+        }
+    })
 
     function updateSensorData() {
         $.get("/timeseries/sensor1").done(function (resp) {
-
             chart1.load({
                 columns: resp
             });
